@@ -1,0 +1,43 @@
+---
+title: "Upworthy research archive analysis"
+link-citations: FALSE
+---
+``` {r}
+
+#knit(getwd())
+
+```
+### Introduction
+
+In this report, we will be analysing the [upworthy research archive](https://osf.io/jd64p/). The upworthy research archive is a dataset of thousands of A/B tests of headlines conducted by Upworthy from January 2013 to April 2015.
+
+### Analysis
+
+We load in the dataset and show a sample of the dataset below.
+
+```{r read}
+exploratory_data <-
+  read_csv(glue('{getwd()}/datasets/upworthy-archive-exploratory-packages-03.12.2020.csv'), show_col_types = FALSE) 
+
+exploratory_data <-
+  exploratory_data |>
+  rename(id = `...1`)
+
+exploratory_data |>
+  head(10)
+```
+
+We want to understand more about the dataset before we get into an analysis of the A/B test results.
+
+```{r summaries}
+
+exploratory_data |>
+  summary()
+```
+
+```{r}
+
+exploratory_data |>
+  summarise(num_unique_ab_tests = n_distinct(clickability_test_id), num_winners = sum(winner))
+
+```
