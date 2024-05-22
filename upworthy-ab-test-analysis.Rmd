@@ -4,8 +4,7 @@ link-citations: FALSE
 ---
 ``` {r}
 
-#knit(getwd())
-
+#rmarkdown::render(glue('{getwd()}/upworthy-ab-test-analysis.Rmd'), 'github_document', glue('{getwd()}/upworthy-ab-test-analysis.md'), run_pandoc = TRUE)
 ```
 ### Introduction
 
